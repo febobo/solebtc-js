@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as HomeActions from '../actions/HomeActions';
 import styles from '../../css/app.css';
+import { Button } from 'react-bootstrap';
 
 class Home extends Component {
   render() {
@@ -11,9 +12,9 @@ class Home extends Component {
     return (
       <main>
         <h1 className={styles.text}>Welcome {title}!</h1>
-        <button onClick={e => actions.changeTitle(prompt())}>
+        <Button bsStyle='primary' bsSize='large' onClick={e => actions.changeTitle(prompt())}>
           Update Title
-        </button>
+        </Button>
       </main>
     );
   }
