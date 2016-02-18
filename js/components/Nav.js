@@ -1,10 +1,28 @@
 import React, {Component} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import T from 'i18n-react';
+import {changeLanguage} from '../actions/Language';
 
 class NavigationBar extends Component {
   render() {
+    const langs = {
+      'en': 'English',
+      'cn': '中文'
+    };
+
+    const i18nDropdown = (
+      <NavDropdown title={langs[this.props.language]} id='i18n'>
+        {['en', 'cn'].map((lang, i) => {
+          return (
+            <MenuItem lang={`${lang}`} onClick={::this._changeLanguage} key={i}>
+              {langs[lang]}
+            </MenuItem>
+          );
+        })}
+      </NavDropdown>
+    );
+
     const navButtons = this.props.loggedIn ? (
       <Nav pullRight>
         <LinkContainer to={{pathname: '/dashboard'}}>
@@ -15,6 +33,7 @@ class NavigationBar extends Component {
         <NavItem onClick={::this._logout}>
           <T text="navbar.logout" />
         </NavItem>
+        {i18nDropdown}
       </Nav>
     ) : (
       <Nav pullRight>
@@ -28,6 +47,7 @@ class NavigationBar extends Component {
             <T text="navbar.login" />
           </NavItem>
         </LinkContainer>
+        {i18nDropdown}
       </Nav>
     );
 
@@ -48,10 +68,19 @@ class NavigationBar extends Component {
   _logout() {
     this.props.dispatch(logout());
   };
+
+  _changeLanguage(evt) {
+    // reload the whole page
+    // as dispatch(changeLanguage($lang)) do not caused re-render
+    let lang = evt.target.getAttribute('lang');
+    changeLanguage(lang);
+    window.location.reload();
+  };
 }
 
 NavigationBar.propTypes = {
-  loggedIn: React.PropTypes.bool.isRequired
+  loggedIn: React.PropTypes.bool.isRequired,
+  language: React.PropTypes.string.isRequired
 }
 
 export default NavigationBar
