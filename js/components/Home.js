@@ -5,6 +5,11 @@ import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
 
 class Home extends Component {
+  componentWillMount() {
+    // TODO: read language from store
+    LanguageActions.changeLanguage('en');
+  };
+
   render() {
     const {dispatch} = this.props;
     const {loggedIn} = this.props.data;

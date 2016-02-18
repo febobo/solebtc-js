@@ -9,23 +9,23 @@ class NavigationBar extends Component {
       <Nav pullRight>
         <LinkContainer to={{pathname: '/dashboard'}}>
           <NavItem href='/dashboard'>
-            <T text="navbar_dashboard" />
+            <T text="navbar.dashboard" />
           </NavItem>
         </LinkContainer>
         <NavItem onClick={::this._logout}>
-          <T text="navbar_logout" />
+          <T text="navbar.logout" />
         </NavItem>
       </Nav>
     ) : (
       <Nav pullRight>
         <LinkContainer to={{pathname: '/register'}}>
           <NavItem>
-            <T text="navbar_register" />
+            <T text="navbar.register" />
           </NavItem>
         </LinkContainer>
         <LinkContainer to={{pathname: '/login'}}>
           <NavItem>
-            <T text="navbar_login" />
+            <T text="navbar.login" />
           </NavItem>
         </LinkContainer>
       </Nav>
@@ -54,4 +54,4 @@ NavigationBar.propTypes = {
   loggedIn: React.PropTypes.bool.isRequired
 }
 
-export default NavigationBar;
+export default NavigationBar
