@@ -1,19 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as HomeActions from '../actions/HomeActions';
+import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
 
 class Home extends Component {
   render() {
-    const {title, dispatch} = this.props;
-    const actions = bindActionCreators(HomeActions, dispatch);
+    const {dispatch} = this.props;
+    const {loggedIn} = this.props.data;
+    const actions = bindActionCreators(LanguageActions, dispatch);
     return (
       <main>
-        <NavigationBar loggedIn={this.props.loggedIn} />
+        <NavigationBar loggedIn={loggedIn} />
       </main>
     );
   }
 }
 
-export default connect(state => state.Sample)(Home)
+function select(state) {
+  return {
+    data: state.reducer
+  };
+}
+
+export default connect(select)(Home)

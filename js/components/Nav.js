@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import T from 'i18n-react';
 
 class NavigationBar extends Component {
   render() {
@@ -8,20 +9,24 @@ class NavigationBar extends Component {
       <Nav pullRight>
         <LinkContainer to={{pathname: '/dashboard'}}>
           <NavItem href='/dashboard'>
-            Dashboard
+            <T text="navbar_dashboard" />
           </NavItem>
         </LinkContainer>
         <NavItem onClick={::this._logout}>
-          Logout
+          <T text="navbar_logout" />
         </NavItem>
       </Nav>
     ) : (
       <Nav pullRight>
         <LinkContainer to={{pathname: '/register'}}>
-          <NavItem>Register</NavItem>
+          <NavItem>
+            <T text="navbar_register" />
+          </NavItem>
         </LinkContainer>
         <LinkContainer to={{pathname: '/login'}}>
-          <NavItem>Login</NavItem>
+          <NavItem>
+            <T text="navbar_login" />
+          </NavItem>
         </LinkContainer>
       </Nav>
     );
