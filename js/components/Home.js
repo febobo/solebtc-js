@@ -6,13 +6,15 @@ import NavigationBar from './Nav';
 
 class Home extends Component {
   componentWillMount() {
-    // TODO: read language from store
-    LanguageActions.changeLanguage('en');
+    LanguageActions.changeLanguage(this.props.data.language);
   };
 
   render() {
     const {dispatch} = this.props;
-    const {loggedIn} = this.props.data;
+    let loggedIn = false;
+    if (this.props.data.authToken) {
+      loggedIn = true;
+    }
     const actions = bindActionCreators(LanguageActions, dispatch);
     return (
       <main>
