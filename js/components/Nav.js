@@ -54,6 +54,7 @@ class NavigationBar extends Component {
     return (
       <Navbar>
         <Navbar.Header>
+          <a href='/' className='pull-left'><img src={require('../../images/logo.png')} /></a>
           <Navbar.Brand>
             <a href='/'>SoleBTC</a>
           </Navbar.Brand>
