@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as HomeActions from '../actions/HomeActions';
-import styles from '../../css/app.css';
-import { Button } from 'react-bootstrap';
+import NavigationBar from './Nav';
 
 class Home extends Component {
   render() {
@@ -11,10 +10,7 @@ class Home extends Component {
     const actions = bindActionCreators(HomeActions, dispatch);
     return (
       <main>
-        <h1 className={styles.text}>Welcome {title}!</h1>
-        <Button bsStyle='primary' bsSize='large' onClick={e => actions.changeTitle(prompt())}>
-          Update Title
-        </Button>
+        <NavigationBar loggedIn={this.props.loggedIn} />
       </main>
     );
   }

@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+import Home from './containers/Home';
 import { Router, Route, hashHistory } from 'react-router';
 
 const routes = (
   <Router history={hashHistory}>
-    <Route path="/" component={App}></Route>
+    <Route path="/" component={Home}>
+      
+    </Route>
   </Router>
 );
 

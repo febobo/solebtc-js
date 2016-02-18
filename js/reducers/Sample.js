@@ -1,7 +1,7 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
 let defaultState = {
-  title: 'Home'
+  loggedIn: false
 };
 
 export default function(state = defaultState, action) {
