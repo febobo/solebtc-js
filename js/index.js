@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './containers/Home';
-import { Router, Route, hashHistory } from 'react-router';
+import {Router, Route, browserHistory} from 'react-router';
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore';
+import App from './components/App';
 
-const routes = (
-  <Router history={hashHistory}>
-    <Route path="/" component={Home}>
-      
-    </Route>
-  </Router>
-);
+const store = configureStore();
 
-const mountNode = document.getElementById('main');
-
-ReactDOM.render(routes, mountNode);
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+      </Route>
+    </Router>
+  </Provider>
+, document.getElementById('main'));

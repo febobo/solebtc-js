@@ -5,7 +5,7 @@ import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
 import T from 'i18n-react';
 
-class Home extends Component {
+class App extends Component {
   componentWillMount() {
     let lang = this.props.data.language;
     T.setTexts(require('../texts/' + lang + '.js').text);
@@ -21,6 +21,7 @@ class Home extends Component {
     return (
       <main>
         <NavigationBar loggedIn={loggedIn} language={this.props.data.language} dispatch={dispatch} />
+        {this.props.children}
       </main>
     );
   }
@@ -32,4 +33,4 @@ function select(state) {
   };
 }
 
-export default connect(select)(Home)
+export default connect(select)(App)
