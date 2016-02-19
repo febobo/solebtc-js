@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
-import T from 'i18n-react';
+import {i18n} from '../utils/i18n';
 
 class App extends Component {
   componentWillMount() {
     let lang = this.props.data.language;
-    T.setTexts(require('../texts/' + lang + '.js').text);
+    i18n.extend(require('../texts/' + lang + '.js').text);
   };
 
   render() {

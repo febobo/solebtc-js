@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import T from 'i18n-react';
 import {changeLanguage} from '../actions/Language';
+import {i18n} from '../utils/i18n';
 
 class NavigationBar extends Component {
   render() {
@@ -27,11 +27,11 @@ class NavigationBar extends Component {
       <Nav pullRight>
         <LinkContainer to={{pathname: '/dashboard'}}>
           <NavItem href='/dashboard'>
-            <T text="navbar.dashboard" />
+            {i18n.t('navbar.dashboard')}
           </NavItem>
         </LinkContainer>
         <NavItem onClick={::this._logout}>
-          <T text="navbar.logout" />
+          {i18n.t('navbar.logout')}
         </NavItem>
         {i18nDropdown}
       </Nav>
@@ -39,12 +39,12 @@ class NavigationBar extends Component {
       <Nav pullRight>
         <LinkContainer to={{pathname: '/register'}}>
           <NavItem>
-            <T text="navbar.register" />
+            {i18n.t('navbar.register')}
           </NavItem>
         </LinkContainer>
         <LinkContainer to={{pathname: '/login'}}>
           <NavItem>
-            <T text="navbar.login" />
+            {i18n.t('navbar.login')}
           </NavItem>
         </LinkContainer>
         {i18nDropdown}

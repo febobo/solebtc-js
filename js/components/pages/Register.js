@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Input, ButtonInput} from 'react-bootstrap';
-import T from 'i18n-react';
+import {i18n} from '../../utils/i18n';
 
 class Register extends Component {
   render() {
     return (
       <form>
-        <Input ref='email' type='email' label='Email Address' placeholder='sole@btc.com' />
-        <Input ref='bitcoin' type='text' label='Bitcoin Address' placeholder='1CfyxGasCYUE5sLwpTfzR8dCbQeNHt3D14' />
-        <ButtonInput type='submit' value='Register' />
+        <Input ref='email' type='email' label={i18n.t('register.email')} placeholder='sole@btc.com' />
+        <Input ref='bitcoin' type='text' label={i18n.t('register.bitcoin_address')} placeholder='1CfyxGasCYUE5sLwpTfzR8dCbQeNHt3D14' />
+        <ButtonInput type='submit' value={i18n.t('register.register')} />
       </form>
     );
   };
