@@ -6,7 +6,7 @@ export const text = {
     "logout": "Logout"
   },
   "register": {
-    "register": "register",
+    "register": "Register",
     "email": "Email Address",
     "bitcoin_address": "Bitcoin Address"
   },
