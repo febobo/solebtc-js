@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var devFlagPlugin = new webpack.DefinePlugin({
+  'process.env.NODE_ENV': '"production"',
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 });
 
@@ -11,7 +12,7 @@ module.exports = {
     './js/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'static'),
     publicPath: '/static/',
     filename: 'bundle.js',
   },
