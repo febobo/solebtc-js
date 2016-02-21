@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import App from './components/App';
 import Home from './components/pages/Home';
+import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import NotFound from './components/pages/NotFound';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route component={App}>
         <Route path='/' component={Home} />
+        <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='*' component={NotFound} />
       </Route>

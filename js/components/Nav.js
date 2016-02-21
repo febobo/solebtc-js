@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import {changeLanguage} from '../actions/Language';
+import {logout} from '../actions/User';
 import {i18n} from '../utils/i18n';
 
 class NavigationBar extends Component {
@@ -52,7 +53,7 @@ class NavigationBar extends Component {
     );
 
     return (
-      <Navbar>
+      <Navbar fluid>
         <Navbar.Header>
           <a href='/' className='pull-left'><img src={require('../../images/logo.png')} /></a>
           <Navbar.Brand>
@@ -66,7 +67,8 @@ class NavigationBar extends Component {
     );
   };
 
-  _logout() {
+  _logout(evt) {
+    evt.preventDefault();
     this.props.dispatch(logout());
   };
 

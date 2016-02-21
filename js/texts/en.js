@@ -5,6 +5,10 @@ export const text = {
     "register": "Register",
     "logout": "Logout"
   },
+  "login": {
+    "email": "Email Address",
+    "login": "Login"
+  },
   "register": {
     "register": "Register",
     "email": "Email Address",

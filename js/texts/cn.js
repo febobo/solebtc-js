@@ -5,6 +5,10 @@ export const text = {
     "register": "注册",
     "logout": "退出"
   },
+  "login": {
+    "email": "邮箱地址",
+    "login": "登陆"
+  },
   "register": {
     "register": "注册",
     "email": "邮箱地址",
