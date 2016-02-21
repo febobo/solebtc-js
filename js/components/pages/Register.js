@@ -1,19 +1,39 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {LinkContainer} from 'react-router-bootstrap';
-import {Row, Col, Input, ButtonInput} from 'react-bootstrap';
+import {Row, Col, Input, ButtonInput, Alert} from 'react-bootstrap';
 import {i18n} from '../../utils/i18n';
 import {register} from '../../actions/User';
 import {getQueryByName} from '../../utils/helper';
+import Spinner from '../Spinner';
 
 class Register extends Component {
+  componentWillMount() {
+    this.checkAuth(this.props.data.authToken);
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.checkAuth(nextProps.data.authToken);
+  };
+
+  checkAuth(authToken) {
+    if (authToken) {
+      this.context.router.push({pathname: '/'});
+    }
+  };
+
   render() {
+    const {isRequesting, error} = this.props.data.register;
     return (
       <div className='container'>
         <Row>
           <Col sm={6} md={4} mdOffset={4}>
+            {error ? (
+              <Alert  bsStyle='danger'>
+                <p>{error}</p>
+              </Alert>
+            ) : (<empty></empty>)}
             <div>
-              <form className="form-register" onSubmit={this._onSubmit.bind(this)}>
+              <form onSubmit={this._onSubmit.bind(this)}>
                 <Input
                   ref='email'
                   type='email'
@@ -27,7 +47,13 @@ class Register extends Component {
                   label={i18n.t('register.bitcoin_address')}
                   placeholder='1CfyxGasCYUE5sLwpTfzR8dCbQeNHt3D14'
                   required />
-                <ButtonInput className='btn btn-primary btn-block' type='submit' value={i18n.t('register.register')} />
+                {isRequesting ? (
+                  <div className='form-group'>
+                    <Spinner />
+                  </div>
+                ) : (
+                  <ButtonInput className='btn btn-primary btn-block' type='submit' value={i18n.t('register.register')} />
+                )}
               </form>
             </div>
           </Col>
@@ -44,6 +70,10 @@ class Register extends Component {
     this.props.dispatch(register(email, bitcoinAddress, refererID || 0));
   };
 }
+
+Register.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 function select(state) {
   return {

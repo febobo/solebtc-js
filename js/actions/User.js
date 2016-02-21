@@ -16,22 +16,18 @@ const v1 = 'http://localhost:3000/v1';
 
 /* Register */
 export function registerRequest() {
-  // TODO: show requesting indicator
   return {
     type: REGISTER_REQUEST
   };
 }
 
-export function registerSuccess(email) {
-  // TODO: show success alert, login, redirect
+export function registerSuccess() {
   return {
-    type: REGISTER_SUCCESS,
-    email
+    type: REGISTER_SUCCESS
   };
 }
 
 export function registerError(error) {
-  // TODO: show error alert
   return {
     type: REGISTER_ERROR,
     error
@@ -42,26 +38,43 @@ export function register(email, bitcoin_address, referer_id) {
   return (dispatch) => {
     dispatch(registerRequest());
 
+    let url = new URI(v1 + '/users');
     let data = {
       email: email, 
       bitcoin_address: bitcoin_address, 
       referer_id: referer_id
     };
 
+    function onSuccess() {
+      sendLoginRequest(email, (err, res) => {
+        switch (res.statusCode) {
+          case 201:
+            let authToken = JSON.parse(res.text).auth_token;
+            store.set('auth_token', authToken);
+            dispatch(registerSuccess());
+            dispatch(loginSuccess(authToken));
+            break;
+          default:
+            dispatch(registerError('Login error'));
+            break;
+        }
+      });
+    }
+
     request
-      .post(v1URL('/users'))
+      .post(url.toString())
       .send(data)
       .end((err, res) => {
         switch (res.statusCode) {
           case 200:
-            dispatch(registerSuccess(email));
+            onSuccess();
             break;
           case 400:
           case 409:
             dispatch(registerError(JSON.parse(res.text).error));
             break;
           default:
-            console.error('not handle other errors');
+            dispatch(registerError('System error'));
             break;
         }
       });
@@ -93,33 +106,37 @@ export function login(email) {
   return (dispatch) => {
     dispatch(loginRequest());
 
-    let url = new URI(v1 + '/auth_tokens');
-
-    request
-      .post(url.toString())
-      .send({ email: email })
-      .end((err, res) => {
-        switch (res.statusCode) {
-          case 201:
-            let authToken = JSON.parse(res.text).auth_token;
-            store.set('auth_token', authToken);
-            dispatch(loginSuccess(authToken));
-            break;
-          case 400:
-            dispatch(loginError('Request error'));
-            break;
-          case 403:
-            dispatch(loginError('Your account is banned'));
-            break;
-          case 404:
-            dispatch(loginError(JSON.parse(res.text).error));
-            break;
-          default:
-            dispatch(loginError('System error'));
-            break;
-        }
-      });
+    sendLoginRequest(email, (err, res) => {
+      switch (res.statusCode) {
+        case 201:
+          let authToken = JSON.parse(res.text).auth_token;
+          store.set('auth_token', authToken);
+          dispatch(loginSuccess(authToken));
+          break;
+        case 400:
+          dispatch(loginError('Request error'));
+          break;
+        case 403:
+          dispatch(loginError('Your account is banned'));
+          break;
+        case 404:
+          dispatch(loginError(JSON.parse(res.text).error));
+          break;
+        default:
+          dispatch(loginError('System error'));
+          break;
+      }
+    });
   };
+}
+
+function sendLoginRequest(email, callback) {
+  let url = new URI(v1 + '/auth_tokens');
+
+  request
+    .post(url.toString())
+    .send({ email: email })
+    .end(callback);
 }
 
 /* Logout */
