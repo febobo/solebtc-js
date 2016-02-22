@@ -1,9 +1,13 @@
 export const text = {
   "navbar": {
-    "dashboard": "Dashboard",
     "login": "Login",
     "register": "Register",
-    "logout": "Logout"
+    "logout": "Logout",
+    "unverified": "Unverified",
+    "verified": "Verified",
+    "banned": "Banned",
+    "balance": "Balance",
+    "next_reward_time": "Next reward time"
   },
   "login": {
     "email": "Email Address",

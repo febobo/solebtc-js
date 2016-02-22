@@ -12,6 +12,9 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const LOGOUT = 'LOGOUT';
 
+export const GET_USER = 'GET_USER';
+export const SET_USER = 'SET_USER';
+
 const v1 = 'http://localhost:3000/v1';
 
 /* Register */
@@ -155,8 +158,35 @@ export function logout() {
 
   // remove from local storage
   store.remove('auth_token');
+  store.remove('user');
 
   return {
     type: LOGOUT
   }
+}
+
+/* User operation */
+export function getUser() {
+  return (dispatch) => {
+    let url = new URI(v1 + '/users');
+
+    request
+      .get(url.toString())
+      .set('Auth-Token', store.get('auth_token'))
+      .end((err, res) => {
+        switch (res.statusCode) {
+          case 200:
+            let user = JSON.parse(res.text);
+            dispatch(setUser(user));
+        }
+      });
+  };
+}
+
+function setUser(user) {
+  store.set('user', user);
+  return {
+    type: SET_USER,
+    user
+  };
 }

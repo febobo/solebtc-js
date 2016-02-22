@@ -3,6 +3,7 @@ import {
   REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR, 
   LOGIN_REQUEST, LOGIN_ERROR, LOGIN_SUCCESS,
   LOGOUT,
+  SET_USER,
 } from '../actions/User';
 
 // store
@@ -44,6 +45,9 @@ export default function(state = defaultState, action) {
 
     case LOGOUT:
       return {...state, authToken: undefined, user: undefined};
+
+   case SET_USER:
+      return {...state, user: action.user};
 
     default:
       return state;
