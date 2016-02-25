@@ -5,9 +5,6 @@ import {
   LOGOUT,
   SET_USER,
 } from '../actions/User';
-
-// store
-global.localStorage = require('localStorage');
 import store from 'store';
 
 const defaultState = {
