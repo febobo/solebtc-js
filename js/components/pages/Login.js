@@ -32,7 +32,7 @@ class Login extends Component {
               </Alert>
             ) : (<empty></empty>)}
             <div>
-              <form onSubmit={this._onSubmit.bind(this)}>
+              <form onSubmit={::this._onSubmit}>
                 <Input
                   ref='email'
                   type='email'
