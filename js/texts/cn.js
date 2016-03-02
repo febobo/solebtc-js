@@ -8,6 +8,10 @@ export const text = {
     "balance": "余额",
     "next_reward_time": "下次抽奖时间"
   },
+  "footer": {
+    "server_time": "服务器时间",
+    "copyright": "Copyright © 2016 solebtc.com 版权所有"
+  },
   "login": {
     "email": "邮箱地址",
     "login": "登陆"

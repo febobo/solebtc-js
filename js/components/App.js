@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
+import Footer from './Footer';
 import {i18n} from '../utils/i18n';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       <main>
         <NavigationBar authToken={authToken} user={user} language={language} dispatch={dispatch} usersOnline={usersOnline} />
         {this.props.children}
+        <Footer />
       </main>
     );
   };

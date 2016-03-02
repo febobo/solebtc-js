@@ -8,6 +8,10 @@ export const text = {
     "balance": "Balance",
     "next_reward_time": "Next reward time"
   },
+  "footer": {
+    "server_time": "Server Time",
+    "copyright": "Copyright © 2016 solebtc.com All Rights Reserved"
+  },
   "login": {
     "email": "Email Address",
     "login": "Login"
