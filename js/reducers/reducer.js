@@ -9,6 +9,7 @@ import store from 'store';
 
 const defaultState = {
   language: store.get('language') || 'en',
+  usersOnline: 0,
   login: {
     isRequesting: false,
     error: '',

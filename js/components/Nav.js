@@ -19,7 +19,7 @@ class NavigationBar extends Component {
   };
 
   render() {
-    const {authToken, user, language} = this.props;
+    const {authToken, user, language, usersOnline} = this.props;
 
     const langs = {
       'en': 'English',
@@ -82,16 +82,9 @@ class NavigationBar extends Component {
       </Nav>
     ) : (
       <Nav pullRight>
-        <LinkContainer to={{pathname: '/register'}}>
-          <NavItem>
-            {i18n.t('navbar.register')}
-          </NavItem>
-        </LinkContainer>
-        <LinkContainer to={{pathname: '/login'}}>
-          <NavItem>
-            {i18n.t('navbar.login')}
-          </NavItem>
-        </LinkContainer>
+        <Navbar.Text>
+          {i18n.t('navbar.online')}: {usersOnline}
+        </Navbar.Text>
         {i18nDropdown}
       </Nav>
     );
@@ -103,6 +96,7 @@ class NavigationBar extends Component {
           <Navbar.Brand>
             <a href='/'>SoleBTC</a>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           {navButtons}

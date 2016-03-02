@@ -1,7 +1,6 @@
 export const text = {
   "navbar": {
-    "login": "登陆",
-    "register": "注册",
+    "online": "在线人数",
     "logout": "退出",
     "unverified": "未认证",
     "verified": "已认证",

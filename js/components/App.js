@@ -15,11 +15,11 @@ class App extends Component {
 
   render() {
     const {dispatch} = this.props;
-    const {authToken, user, language} = this.props.data;
+    const {authToken, user, language, usersOnline} = this.props.data;
     const actions = bindActionCreators(LanguageActions, dispatch);
     return (
       <main>
-        <NavigationBar authToken={authToken} user={user} language={language} dispatch={dispatch} />
+        <NavigationBar authToken={authToken} user={user} language={language} dispatch={dispatch} usersOnline={usersOnline} />
         {this.props.children}
       </main>
     );

@@ -1,7 +1,6 @@
 export const text = {
   "navbar": {
-    "login": "Login",
-    "register": "Register",
+    "online": "Online",
     "logout": "Logout",
     "unverified": "Unverified",
     "verified": "Verified",
