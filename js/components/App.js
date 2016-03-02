@@ -9,6 +9,8 @@ class App extends Component {
   componentWillMount() {
     let lang = this.props.data.language;
     i18n.extend(require('../texts/' + lang + '.js').text);
+
+    this.connectWS();
   };
 
   render() {
@@ -21,7 +23,17 @@ class App extends Component {
         {this.props.children}
       </main>
     );
-  }
+  };
+
+  connectWS() {
+    console.log("connecting websocket....");
+    // let ws = new WebSocket('ws://localhost:3000/v1/websocket');
+    let ws = new WebSocket('ws://localhost:8080/api/v1/websocket');
+    ws.onopen = (evt) => setInterval(() => ws.send('ping message'), 5000);
+    ws.onmessage = (evt) => console.log('message coming ', evt.data);
+    ws.onerror = (evt) => console.log('websocket error ', evt);
+    ws.onclose = (evt) => console.log('websocket close ', evt);
+  };
 }
 
 function select(state) {
