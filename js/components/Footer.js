@@ -37,7 +37,7 @@ class Footer extends Component {
                 <em>{i18n.t('footer.copyright')}</em>
               </div>
             </Col>
-            <Col md={4} mdOffset={2}>
+            <Col md={4} mdOffset={2} smHidden xsHidden>
               <div className='pull-right'>
                 <Image 
                   className={styles.logoImg}
