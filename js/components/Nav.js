@@ -83,6 +83,16 @@ class NavigationBar extends Component {
     ) : (
       <Nav pullRight>
         <Navbar.Text>
+          <strong style={{
+            background: '#509c1d', 
+            borderRadius: '15px', 
+            height: '10px', 
+            width: '10px',
+            display: 'block',
+            marginRight: '5px',
+            marginTop: '5px',
+            float: 'left',
+          }}></strong>
           {i18n.t('navbar.online')}: {usersOnline}
         </Navbar.Text>
         {i18nDropdown}
