@@ -33,7 +33,9 @@ class App extends Component {
           user={user} 
           language={language} 
           dispatch={dispatch} 
-          usersOnline={usersOnline} />
+          usersOnline={usersOnline}
+          bitcoinPrice={bitcoinPrice}
+        />
         {this.props.children}
         <Footer />
       </main>

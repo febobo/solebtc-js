@@ -1,6 +1,8 @@
 export const text = {
   "navbar": {
     "online": "在线人数",
+    "bitcoin_price": "比特币价格",
+    "unit": "美元",
     "logout": "退出",
     "unverified": "未认证",
     "verified": "已认证",

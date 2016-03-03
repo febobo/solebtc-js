@@ -19,7 +19,7 @@ class NavigationBar extends Component {
   };
 
   render() {
-    const {authToken, user, language, usersOnline} = this.props;
+    const {authToken, user, language, usersOnline, bitcoinPrice} = this.props;
 
     const langs = {
       'en': 'English',
@@ -82,6 +82,9 @@ class NavigationBar extends Component {
       </Nav>
     ) : (
       <Nav pullRight>
+        <Navbar.Text>
+          {i18n.t('navbar.bitcoin_price')}: {bitcoinPrice}{i18n.t('navbar.unit')}
+        </Navbar.Text>
         <Navbar.Text>
           <strong style={{
             background: '#509c1d', 

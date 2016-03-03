@@ -1,6 +1,8 @@
 export const text = {
   "navbar": {
     "online": "Online",
+    "bitcoin_price": "Bitcoin Price",
+    "unit": "USD",
     "logout": "Logout",
     "unverified": "Unverified",
     "verified": "Verified",
