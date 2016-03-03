@@ -4,7 +4,7 @@
   "scripts": {
     "start": "DEBUG=true node server.js",
     "build": "NODE_ENV=production DEBUG=false webpack -p --config webpack.production.js",
-    "build-staging": "NODE_ENV=staging DEBUG=false webpack -p --config webpack.production.js",
+    "build-staging": "NODE_ENV=production DEBUG=false webpack -p --config webpack.staging.js",
     "build-dev": "webpack -p"
   },
   "dependencies": {

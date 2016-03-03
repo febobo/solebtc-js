@@ -1,9 +1,5 @@
-var path = require('path'),
-    rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'development';
-
 var configs = {
-  development: {
+  local: {
     isSSL: false,
     apiServer: 'localhost:3000',
   },
@@ -19,4 +15,4 @@ var configs = {
   }
 };
 
-export const config = configs[env];
+export const config = configs[process.env.CONF || 'local'];
