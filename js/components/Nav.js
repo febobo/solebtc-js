@@ -91,14 +91,11 @@ class NavigationBar extends Component {
 
     return (
       <Navbar fluid>
-        <Navbar.Header>
-          <a href='/' className='pull-left'><img src={require('../../images/logo.png')} /></a>
-          <Navbar.Brand>
-            <a href='/'>SoleBTC</a>
-          </Navbar.Brand>
+        <Navbar.Header >
+          <a href='/' style={{marginTop: '10px'}} className='pull-left'><img src={require('../../images/logo.png')} /></a>
           <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>
+        <Navbar.Collapse style={{marginTop: '14px', marginBottom: '10px'}}>
           {navButtons}
         </Navbar.Collapse>
       </Navbar>
