@@ -26,7 +26,7 @@ class App extends Component {
     const {usersOnline, bitcoinPrice} = this.state;
     const actions = bindActionCreators(LanguageActions, dispatch);
     return (
-      <main>
+      <app> 
         <NavigationBar 
           authToken={authToken} 
           user={user} 
@@ -36,7 +36,7 @@ class App extends Component {
           bitcoinPrice={bitcoinPrice}
         />
         {this.props.children}
-      </main>
+      </app>
     );
   };
 

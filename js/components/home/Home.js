@@ -8,8 +8,8 @@ class Home extends Component {
     return (
       <home>
         <div className='container'>
-          <Advantage />
         </div>
+        <Advantage />
         <Footer />
       </home>
     )
