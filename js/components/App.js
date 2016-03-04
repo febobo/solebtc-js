@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as LanguageActions from '../actions/Language';
 import NavigationBar from './Nav';
-import Footer from './Footer';
 import {i18n} from '../utils/i18n';
 import {config} from '../config/config';
 
@@ -37,7 +36,6 @@ class App extends Component {
           bitcoinPrice={bitcoinPrice}
         />
         {this.props.children}
-        <Footer />
       </main>
     );
   };

@@ -4,10 +4,10 @@ import {Router, Route, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import App from './components/App';
-import Home from './components/pages/Home';
+import Home from './components/home/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
-import NotFound from './components/pages/NotFound';
+import NotFound from './components/not_found/NotFound';
 
 ReactDOM.render(
   <Provider store={configureStore()}>

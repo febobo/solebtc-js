@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Advantage from '../Advantage';
+import Footer from '../Footer';
 
 class Home extends Component {
   render() {
     return (
-      <div className='container'>
-        <Advantage />
-      </div>
+      <home>
+        <div className='container'>
+          <Advantage />
+        </div>
+        <Footer />
+      </home>
     )
   };
 }
