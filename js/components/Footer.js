@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {LinkContainer} from 'react-router-bootstrap';
 import {i18n} from '../utils/i18n';
 import styles from '../../css/footer.css';
 import {Row, Col, Image} from 'react-bootstrap';
 var dateFormat = require('dateformat');
-var classNames = require('classnames');
 
 class Footer extends Component {
   constructor(props) {
@@ -26,7 +24,7 @@ class Footer extends Component {
       <div className={styles.footerBg}>
         <div className='container'>
           <Row>
-            <Col md={4} mdOffset={1}>
+            <Col md={4}>
               <div className={styles.footerInfo}>
                 <p>
                   <img src={require('../../images/footerIco.png')} />
@@ -37,7 +35,7 @@ class Footer extends Component {
                 <em>{i18n.t('footer.copyright')}</em>
               </div>
             </Col>
-            <Col md={4} mdOffset={2} smHidden xsHidden>
+            <Col md={4} mdOffset={4} smHidden xsHidden>
               <div className='pull-right'>
                 <Image 
                   className={styles.logoImg}
